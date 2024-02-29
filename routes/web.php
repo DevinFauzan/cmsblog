@@ -32,22 +32,6 @@ Auth::routes();
 // Route::get('auth/dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard')->middleware('auth');
 Route::resource('auth/posts', PostController::class);
 
-//Tech Person
-Route::group(['middleware' => 'tech_person'], function () {
-    // Only include specific routes needed for your controller
-    Route::get('/dashboard-tech', [DashboarTechController::class, 'index'])->name('dashboard-tech.index');
-    Route::get('/dashboard-tech/create', [DashboarTechController::class, 'create'])->name('dashboard-tech.create');
-    Route::post('/dashboard-tech', [DashboarTechController::class, 'store'])->name('dashboard-tech.store');
-    Route::get('/dashboard-tech/{dashboard_tech}', [DashboarTechController::class, 'show'])->name('dashboard-tech.show');
-    Route::get('/dashboard-tech/{dashboard_tech}/edit', [DashboarTechController::class, 'edit'])->name('dashboard-tech.edit');
-    Route::put('/dashboard-tech/{dashboard_tech}', [DashboarTechController::class, 'update'])->name('dashboard-tech.update');
-    Route::delete('/dashboard-tech/{dashboard_tech}', [DashboarTechController::class, 'destroy'])->name('dashboard-tech.destroy');
-
-    // Additional routes
-    Route::get('/dashboard-tech/detail_ticket/{id}/edit', [DashboarTechController::class, 'edit'])->name('detail_ticket.edit');
-    Route::put('/update-ticket-status/{ticket}', [DashboarTechController::class, 'updateStatus'])->name('update.ticket.status');
-    Route::get('/dashboard-tech/datatable', [DashboarTechController::class, 'datatable'])->name('dashboard-tech.datatable');
-});
 
 Route::get('/refresh-table', [DashboardController::class, 'refreshTable'])->name('refresh.table');
 Route::get('/refresh-table-progress', [DashboardController::class, 'refreshTableProgress'])->name('refresh.table_progress');
@@ -108,19 +92,3 @@ Route::get('/chat/{ticketId}', [ChatController::class, 'index'])->name('chat.ind
 
 // Route to send chat messages
 Route::post('/chat/{ticketId}', [ChatController::class, 'store'])->name('chat.store');
-
-
-Route::put('/tickets/{ticket}/assign/{user}', 'TicketController@assign')->name('tickets.assign');
-Route::get('/tickets/{id}/details', 'TicketController@getDetails');
-// Route::get('/auth/dashboard/{id}', 'DashboardController@showTicketDetails');
-Route::get('/auth/get-ticket-details/{id}', 'TicketController@getTicketDetails');
-
-// Route::get('/chat/{ticketId}', function ($ticketId) {
-//     // Test route to see if it's reachable
-//     return "Test Route for ChatController@index";
-// });
-
-// Route::post('/chat/{ticketId}', function ($ticketId) {
-//     // Test route to see if it's reachable
-//     return "Test Route for ChatController@store";
-// });
