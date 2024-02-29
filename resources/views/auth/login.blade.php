@@ -12,7 +12,7 @@
                         </div>
                         <form method="POST" action="{{ route('login') }}" class="log-in" autocomplete="off">
                             @csrf
-                            <h4>Ticket Help Desk <span>SDK</span></h4>
+                            <h4>BLOG YCMII <span>SDK</span></h4>
                             <p>Welcome back! Log in to your account to view today's ticket</p>
 
                             <div class="floating-label">
