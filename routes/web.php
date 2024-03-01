@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\TaskController; // Import your TaskController
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -28,7 +29,7 @@ Route::get('/', function () {
 });
 
 //Admin Web Miracle
-use App\Http\Controllers\AdminController;
+
 
 // Blog Routes
 Route::get('/blog', [AdminController::class, 'showBlog'])->name('blog');
@@ -59,6 +60,13 @@ Route::get('/form_about_us', [AdminController::class, 'showAboutUsForm'])->name(
 
 // Pendaftaran Route
 Route::get('/pendaftaran', [AdminController::class, 'showPendaftaran'])->name('pendaftaran');
+
+//WEBSITE DEPAN
+
+Route::get('/website/{page}', function ($page) {
+    return view("website.{$page}.index");
+})->where('page', 'landingpage|blog|kelas|aktivitas|testimoni|aboutus')->name('website.page');
+
 
 
 Auth::routes();
