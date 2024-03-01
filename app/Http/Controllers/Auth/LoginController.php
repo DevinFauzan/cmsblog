@@ -35,14 +35,14 @@ class LoginController extends Controller
 
         switch ($role) {
             case 'admin':
-                return '/auth/dashboard'; // Redirect admin
+                return '/landing_page'; // Redirect admin
                 break;
-            case 'tech_person':
-                return '/dashboard-tech'; // Redirect tech person
-                break;
-            case 'user':
-                return '/my_ticket'; // Redirect user to my_ticket page
-                break;
+            // case 'tech_person':
+            //     return '/dashboard-tech'; // Redirect tech person
+            //     break;
+            // case 'user':
+            //     return '/my_ticket'; // Redirect user to my_ticket page
+            //     break;
             default:
                 return '/home'; // Redirect to a default page if the role is not recognized
         }

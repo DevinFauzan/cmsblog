@@ -69,11 +69,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role' => 'tech_person'
+            'role' => 'admin'
         ]);
 
         if ($user) {
-            Session::flash('success', 'Registration successful. Your role is tech person');
+            Session::flash('success', 'Registration successful. Your role is admin');
         }
 
         return $user;

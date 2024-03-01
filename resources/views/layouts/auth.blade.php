@@ -183,13 +183,13 @@
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                             {{-- <a class="dropdown-item" href="#">
                                 <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a> --}}
-                                {{-- <a id="profile-button" class="dropdown-item" href="{{ route('user.profile.update') }}">
+                            {{-- <a id="profile-button" class="dropdown-item" href="{{ route('user.profile.update') }}">
                                     <i class="mdi mdi-account me-2 text-primary"></i> Profile
                                 </a> --}}
                             <div class="dropdown-divider"></div>
-                            <a id="profile-button" class="dropdown-item" href="{{ route('user.profile.update') }}">
+                            {{-- <a id="profile-button" class="dropdown-item" href="{{ route('user.profile.update') }}">
                                 <i class="mdi mdi-account me-2 text-primary"></i> Profile
-                            </a>
+                            </a> --}}
                             <a id="logout-button" class="dropdown-item" href="#">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Signout
                                 <form id="logout-form" method="post" action="{{ route('logout') }}">
@@ -233,31 +233,46 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <span class="menu-title">Dashboard</span>
+                        <a class="nav-link" href="{{ route('landing_page') }}">
+                            <span class="menu-title">Landing Page</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
-                    </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <span class="menu-title">Basic UI Elements</span>
-                            <i class="menu-arrow"></i>
-                            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                        </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="pages/ui-features/buttons.html">Buttons</a></li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="pages/ui-features/typography.html">Typography</a></li>
-                            </ul>
-                        </div>
-                    </li> --}}
+                    </li>                   
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/icons/mdi.html">
-                            <span class="menu-title">Tracking</span>
-                            <i class="mdi mdi-contacts menu-icon"></i>
+                        <a class="nav-link" href="{{ route('aktivitas') }}">
+                            <span class="menu-title">Aktivitas</span>
+                            <i class="mdi mdi-video menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('kelas') }}">
+                            <span class="menu-title">Kelas</span>
+                            <i class="mdi mdi-book-open-variant menu-icon"></i>
+
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('testimoni') }}">
+                            <span class="menu-title">Testimoni</span>
+                            <i class="mdi mdi-message-video menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('pendaftaran') }}">
+                            <span class="menu-title">Pendaftaran</span>
+                            <i class="mdi mdi-pen menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('blog') }}">
+                            <span class="menu-title">Blog</span>
+                            <i class="mdi mdi-image-multiple menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('about_us') }}">
+                            <span class="menu-title">About Us</span>
+                            <i class="mdi mdi-information-variant menu-icon"></i>
                         </a>
                     </li>
                     {{-- <li class="nav-item">
@@ -278,10 +293,10 @@
                             <i class="mdi mdi-table-large menu-icon"></i>
                         </a>
                     </li> --}}
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#general-pages" aria-expanded="false"
                             aria-controls="general-pages">
-                            <span class="menu-title">Sample Pages</span>
+                            <span class="menu-title">Kelas</span>
                             <i class="menu-arrow"></i>
                             <i class="mdi mdi-medical-bag menu-icon"></i>
                         </a>
@@ -299,7 +314,7 @@
                                     </a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item sidebar-actions">
                         <span class="nav-link">
                             <div class="border-bottom">
