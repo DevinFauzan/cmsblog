@@ -8,32 +8,52 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Aviato E-Commerce Template">
-
     <meta name="author" content="Themefisher.com">
-
     <title>Airspace | Creative Agency Bootstrap template</title>
 
     <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
 
     <!-- bootstrap.min css -->
-    <link rel="stylesheet" href="{{ asset('assets/website/plugins/bootstrap/css/bootstrap.min.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Ionic Icon Css -->
-    <link rel="stylesheet" href="{{ asset('assets/website/plugins/Ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/website/plugins/Ionicons/css/ionicons.min.css') }}?v=1.0">
+
     <!-- animate.css -->
-    <link rel="stylesheet" href="{{ asset('assets/website/plugins/animate-css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/website/plugins/animate-css/animate.css') }}?v=1.0">
+
     <!-- Magnify Popup -->
-    <link rel="stylesheet" href="{{ asset('assets/website/plugins/magnific-popup/dist/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/website/plugins/magnific-popup/dist/magnific-popup.css') }}?v=1.0">
+
     <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/website/plugins/slick-carousel/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/website/plugins/slick-carousel/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/website/plugins/slick-carousel/slick/slick.css') }}?v=1.0">
+    <link rel="stylesheet" href="{{ asset('assets/website/plugins/slick-carousel/slick/slick-theme.css') }}?v=1.0">
 
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('assets/website/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/website/css/style.css') }}?v=1.0">
 
+
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+
+    <!-- Load Bootstrap 5 and jQuery 3.6.0 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
+<style>
+    .nav-item.active {
+        color: #ff0000;
+        /* Change to the desired color */
+        font-weight: bold;
+        /* Apply bold font */
+    }
+</style>
 
 <body id="body">
 
@@ -43,64 +63,48 @@
             <div class="row">
                 <div class="col-md-12">
                     <!-- header Nav Start -->
-                    <nav class="navbar">
+                    <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
                             <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <a class="navbar-brand" href="index.html">
-                                    <img src="{{ asset('assets/website/images/logo.png') }}" alt="Logo">
-                                </a>
-                            </div>
+                            <a class="navbar-brand" href="{{ route('website.page', 'landingpage') }}">
+                                <img src="{{ asset('assets/website/images/logo.png') }}" alt="Logo">
+                            </a>
+                    
+                            <!-- Toggler/collapsible Button -->
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                    
                             <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                            aria-haspopup="true" aria-expanded="false">Portfolio <span
-                                                class="ion-ios-arrow-down"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="portfolio.html">Portfolio Filter</a></li>
-                                            <li><a href="portfolio-single.html">Portfolio Single</a></li>
-                                        </ul>
+                            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'landingpage' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.page', 'landingpage') }}">Home</a>
                                     </li>
-                                    <li><a href="service.html">Service</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                            aria-haspopup="true" aria-expanded="false">Blog <span
-                                                class="ion-ios-arrow-down"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                            <li><a href="blog-full-width.html">Blog Full Width</a></li>
-                                        </ul>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'aktivitas' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.page', 'aktivitas') }}">aktivitas</a>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                            aria-haspopup="true" aria-expanded="false">Pages <span
-                                                class="ion-ios-arrow-down"></span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                            <li><a href="faq.html">FAQ</a></li>
-                                            <li><a href="pricing.html">Pricing Table</a></li>
-                                        </ul>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'kelas' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.page', 'kelas') }}">kelas</a>
                                     </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'testimoni' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.page', 'testimoni') }}">testimoni</a>
+                                    </li>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'blog' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.page', 'blog') }}">Blog</a>
+                                    </li>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'aboutus' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.page', 'aboutus') }}">about us</a>
+                                    </li>
                                 </ul>
-                            </div><!-- /.navbar-collapse -->
+                            </div>
                         </div><!-- /.container-fluid -->
                     </nav>
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </div>

@@ -27,6 +27,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//WEBSITE DEPAN
+
+Route::get('/website/{page}', function ($page) {
+    return view("website.{$page}.index");
+})->where('page', 'landingpage|blog|kelas|aktivitas|testimoni|aboutus')->name('website.page');
+
+
+
 Auth::routes();
 
 // Route::get('auth/dashboard', [DashboardController::class, 'dashboard'])->name('auth.dashboard')->middleware('auth');
