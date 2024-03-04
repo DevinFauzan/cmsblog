@@ -21,7 +21,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="table-responsive">
+                            <div>
                                 <table id="blogTable" class="table table-striped" style="width: 100%">
                                     <thead>
                                         <tr>
