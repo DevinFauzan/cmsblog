@@ -63,6 +63,19 @@ Route::get('/form_about_us', [AdminController::class, 'showAboutUsForm'])->name(
 // Pendaftaran Route
 Route::get('/pendaftaran', [AdminController::class, 'showPendaftaran'])->name('pendaftaran');
 
+// rms Route
+Route::get('/role_management', [AdminController::class, 'showRolemanagement'])->name('showRolemanagement');
+Route::get('/role_management_edit', [AdminController::class, 'editrms'])->name('editrms');
+Route::get('/role_management/fetch', [AdminController::class, 'fetchRoleManagementData'])->name('roleManagementData.fetch');
+Route::get('/user/detail/{id}', [AdminController::class, 'showDetail']);
+
+
+Route::get('/user_management', [AdminController::class, 'showUserManagement'])->name('showUserManagement');
+Route::get('/user_management_edit', [AdminController::class, 'editUserManagement'])->name('editUserManagement');
+Route::get('/user_management/fetch', [AdminController::class, 'fetchUserManagementData'])->name('userManagementData.fetch');
+
+
+
 
 //WEBSITE DEPAN
 

@@ -275,6 +275,18 @@
                             <i class="mdi mdi-information-variant menu-icon"></i>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('showRolemanagement') }}">
+                            <span class="menu-title">Role Management</span>
+                            <i class="mdi mdi-information-variant menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('showUserManagement') }}">
+                            <span class="menu-title">User Management</span>
+                            <i class="mdi mdi-information-variant menu-icon"></i>
+                        </a>
+                    </li>
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="pages/forms/basic_elements.html">
                             <span class="menu-title">Forms</span>

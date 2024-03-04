@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Media;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -40,7 +41,9 @@ class AdminController extends Controller
         $mediaId = 'MD' . str_pad(Media::count() + 1, 4, '0', STR_PAD_LEFT);
 
         // Simpan file
-        $mediaPath = $request->file('media_nama')->store('media', 'public');
+        // $mediaPath = $request->file('media_nama')->store('media', 'public');
+        $mediaPath = $request->file('media_nama')->storeAs('media', $request->file('media_nama')->getClientOriginalName(), 'public');
+
 
         // Simpan data ke tabel Media
         $media = Media::create([
@@ -130,5 +133,52 @@ class AdminController extends Controller
     public function showPendaftaran()
     {
         return view('website.blog.admin.pendaftaran.pendaftaran');
+    }
+
+    public function editrms()
+    {
+        $users = User::all();
+        return view('website.blog.admin.roleManagement.form_role_management', compact('users'));
+    }
+
+    public function showRolemanagement()
+    {
+        $users = User::all();
+        return view('website.blog.admin.roleManagement.role_management', compact('users'));
+    }
+
+    public function showUsermanagement()
+    {
+        $users = User::all();
+        return view('website.blog.admin.user_management.user_management', compact('users'));
+    }
+
+    public function editUserManagement()
+    {
+        $users = User::all();
+        return view('website.blog.admin.user_Management.form_user_management', compact('users'));
+    }
+
+    // app/Http/Controllers/UserController.php
+    public function showDetail($id)
+    {
+        // Implement logic untuk menampilkan halaman detail berdasarkan ID
+        // ...
+        return view('users.detail', ['id' => $id]);
+    }
+
+
+    public function fetchUserManagementData()
+    {
+        // Fetch all blogs, you may need to adjust this based on your requirements
+        $users = User::select(['name', 'role'])->get();
+        return response()->json($users);
+    }
+
+    public function fetchRoleManagementData()
+    {
+        // Fetch all blogs, you may need to adjust this based on your requirements
+        $users = User::select(['name', 'role'])->get();
+        return response()->json($users);
     }
 }

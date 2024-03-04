@@ -1,8 +1,8 @@
 @extends('layouts.welcome')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
-
 
     body {
         -moz-box-sizing: border-box;
@@ -96,6 +96,28 @@
         font-weight: 600;
         text-transform: uppercase;
     }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination .page-item {
+        margin: 0 5px;
+    }
+
+    .pagination .page-link {
+        color: #007bff;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+
+    .pagination .page-link:hover {
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+    }
 </style>
 
 @section('content')
@@ -114,8 +136,7 @@
                             <div class="col-xs-12 col-sm-4">
                                 <div class="card">
                                     <a class="img-card" href="#">
-                                        <img src="{{ asset('storage/' . $b->media_nama) }}"
-                                            alt="{{ $b->judul }}" />
+                                        <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
                                     </a>
                                     <div class="card-content">
                                         <h4 class="card-title">
@@ -123,7 +144,7 @@
                                             </a>
                                         </h4>
                                         <p class="">
-                                          {{ $b->deskripsi }}
+                                            {{ $b->deskripsi }}
                                         </p>
                                     </div>
                                     <div class="card-read-more">
@@ -134,9 +155,9 @@
                                 </div>
                             </div>
                         @endforeach
-
-
-                        <!-- ... Rest of your cards ... -->
+                        {{-- <div class="pagination">
+                            {{ $blogs->links() }}
+                        </div> --}}
                     </div>
                 </div>
             </div>
