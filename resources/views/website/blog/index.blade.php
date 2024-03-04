@@ -1,8 +1,10 @@
 @extends('layouts.welcome')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
+<<<<<<< HEAD
     /* Add max-height to the card-content */
     .card-content {
         max-height: 100px;
@@ -17,6 +19,8 @@
         text-overflow: ellipsis;
     }
 
+=======
+>>>>>>> 5e58498a1e54d07f3a642302432a4ea00728f04e
     body {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -109,6 +113,28 @@
         font-weight: 600;
         text-transform: uppercase;
     }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination .page-item {
+        margin: 0 5px;
+    }
+
+    .pagination .page-link {
+        color: #007bff;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+
+    .pagination .page-link:hover {
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+    }
 </style>
 
 @section('content')
@@ -134,6 +160,7 @@
                                             <a href="#"> {{ $b->judul }}</a>
                                         </h4>
                                         <p class="limited-text">
+                                        <p class="">
                                             {{ $b->deskripsi }}
                                         </p>
                                     </div>

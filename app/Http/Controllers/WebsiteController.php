@@ -15,9 +15,8 @@ class WebsiteController extends Controller
      */
     public function indexBlog()
     {
+        //$blogs = Blog::paginate(3); // Adjust the number per page as needed
         $blogs = Blog::all();
-
-        // Tampilkan halaman blog
         return view('website.blog.index', compact('blogs'));
     }
 
