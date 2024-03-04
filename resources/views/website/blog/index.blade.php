@@ -150,27 +150,26 @@
                                 Semantics</p>
                         </div>
                         @foreach ($blogs as $b)
-                            <div class="col-xs-12 col-sm-4">
-                                <div class="card">
-                                    <a class="img-card" href="#">
-                                        <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
-                                    </a>
-                                    <div class="card-content">
-                                        <h4 class="card-title">
-                                            <a href="#"> {{ $b->judul }}</a>
-                                        </h4>
-                                        <p class="limited-text">
-                                        <p class="">
-                                            {{ $b->deskripsi }}
-                                        </p>
-                                    </div>
-                                    <div class="card-read-more">
-                                      <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}" class="btn btn-link btn-block">
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="card">
+                                <a class="img-card" href="#">
+                                    <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
+                                </a>
+                                <div class="card-content">
+                                    <h4 class="card-title">
+                                        <a href="#"> {{ $b->judul }}</a>
+                                    </h4>
+                                    <p class="limited-text">
+                                        {{ $b->deskripsi }}
+                                    </p>
+                                </div>
+                                <div class="card-read-more">
+                                    <a href="{{ route('blog.show', ['id' => $b->id]) }}" class="btn btn-link btn-block">
                                         Read More
                                     </a>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
                         @endforeach
                         <!-- ... Rest of your cards ... -->
                     </div>
