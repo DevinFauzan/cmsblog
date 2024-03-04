@@ -26,7 +26,7 @@
                                         placeholder="Nama Role" name="role" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleCheckbox">Akses halaman</label>
+                                    <label for="exampleCheckbox">Akses Halaman</label>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-check">
