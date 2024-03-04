@@ -164,7 +164,7 @@
                                     </p>
                                 </div>
                                 <div class="card-read-more">
-                                    <a href="{{ route('blog.show', ['id' => $b->id]) }}" class="btn btn-link btn-block">
+                                    <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}" class="btn btn-link btn-block">
                                         Read More
                                     </a>
                                 </div>
