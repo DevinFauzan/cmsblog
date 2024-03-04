@@ -66,14 +66,25 @@ Route::get('/pendaftaran', [AdminController::class, 'showPendaftaran'])->name('p
 
 //WEBSITE DEPAN
 
-// Route::get('/website/{page}', function ($page) {
-//     return view("website.{$page}.index");
-// })->where('page', 'landingpage|blog|kelas|aktivitas|testimoni|aboutus')->name('website.page');
 
-Route::get('/website/{page}', [WebsiteController::class, 'indexBlog'])
-        ->where('page', 'landingpage|blog|kelas|aktivitas|testimoni|aboutus')
-        ->name('website.page');
 
+// Landing Page
+Route::get('/blog/{id}', [WebsiteController::class, 'showBLog'])
+->name('blog.showBlog');
+
+
+Route::get('/website/landingpage', [WebsiteController::class, 'indexlandingPage'])->name('website.landingpage');
+Route::get('/website/aktivitas', [WebsiteController::class, 'indexAktivitas'])->name('website.aktivitas');
+Route::get('/website/kelas', [WebsiteController::class, 'indexKelas'])->name('website.kelas');
+Route::get('/website/testimoni', [WebsiteController::class, 'indexTestimoni'])->name('website.testimoni');
+Route::get('/website/blog', [WebsiteController::class, 'indexBlog'])->name('website.blog');
+Route::get('/website/aboutus', [WebsiteController::class, 'indexAboutUs'])->name('website.aboutus');
+
+
+
+        
+
+       
 
 
 

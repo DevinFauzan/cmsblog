@@ -3,6 +3,19 @@
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
+    /* Add max-height to the card-content */
+    .card-content {
+        max-height: 100px;
+        /* Adjust the value as needed */
+        overflow: hidden;
+    }
+
+    /* Limit the number of characters in the description */
+    .limited-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     body {
         -moz-box-sizing: border-box;
@@ -24,8 +37,8 @@
         display: table-cell;
         padding: 1em;
         text-align: center;
-        margin-top: 50px;
-        vertical-align: middle;
+        margin-top: 100px;
+        /* vertical-align: middle; */
     }
 
     .fostrap-logo {
@@ -114,28 +127,24 @@
                             <div class="col-xs-12 col-sm-4">
                                 <div class="card">
                                     <a class="img-card" href="#">
-                                        <img src="{{ asset('storage/' . $b->media_nama) }}"
-                                            alt="{{ $b->judul }}" />
+                                        <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
                                     </a>
                                     <div class="card-content">
                                         <h4 class="card-title">
-                                            <a href="#"> {{ $b->judul }}
-                                            </a>
+                                            <a href="#"> {{ $b->judul }}</a>
                                         </h4>
-                                        <p class="">
-                                          {{ $b->deskripsi }}
+                                        <p class="limited-text">
+                                            {{ $b->deskripsi }}
                                         </p>
                                     </div>
                                     <div class="card-read-more">
-                                        <a href="#" class="btn btn-link btn-block">
-                                            Read More
-                                        </a>
+                                      <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}" class="btn btn-link btn-block">
+                                        Read More
+                                    </a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
-
                         <!-- ... Rest of your cards ... -->
                     </div>
                 </div>

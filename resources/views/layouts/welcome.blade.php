@@ -66,7 +66,7 @@
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
                             <!-- Brand and toggle get grouped for better mobile display -->
-                            <a class="navbar-brand" href="{{ route('website.page', 'landingpage') }}">
+                            <a class="navbar-brand" href="{{ route('website.landingpage', 'landingpage') }}">
                                 <img src="{{ asset('assets/website/images/logo.png') }}" alt="Logo">
                             </a>
                     
@@ -79,24 +79,25 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'landingpage' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('website.page', 'landingpage') }}">Home</a>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.landingpage' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.landingpage') }}">Home</a>
                                     </li>
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'aktivitas' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('website.page', 'aktivitas') }}">aktivitas</a>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.aktivitas' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.aktivitas') }}">aktivitas</a>
                                     </li>
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'kelas' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('website.page', 'kelas') }}">kelas</a>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.kelas' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.kelas') }}">kelas</a>
                                     </li>
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'testimoni' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('website.page', 'testimoni') }}">testimoni</a>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.testimoni' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.testimoni') }}">testimoni</a>
                                     </li>
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'blog' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('website.page', 'blog') }}">Blog</a>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.blog' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.blog') }}">Blog</a>
                                     </li>
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.page' && request('page') === 'aboutus' ? 'active' : '' }}">
-                                        <a class="nav-link" href="{{ route('website.page', 'aboutus') }}">about us</a>
+                                    <li class="nav-item {{ Route::currentRouteName() === 'website.aboutus' ? 'active' : '' }}">
+                                        <a class="nav-link" href="{{ route('website.aboutus') }}">about us</a>
                                     </li>
+                                    
                                 </ul>
                             </div>
                         </div><!-- /.container-fluid -->

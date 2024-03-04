@@ -3,11 +3,6 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
-            <div class="page-header">
-                <h3 class="page-title">
-                    About Us
-                </h3>
-            </div>
             <div class="row">
                 <div class="col-12 grid-margin">
                     <div class="card">
@@ -41,11 +36,11 @@
     @endsection
 
     @section('scripts')
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#aboutUsTable').DataTable();
-        });
-    </script>
-@endsection
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#aboutUsTable').DataTable();
+            });
+        </script>
+    @endsection

@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="section-title text-center">
-          <h2>Fun Facts About Us</h2>
+          <h2>Testimoni</h2>
           <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,  <br> there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
         </div>
       </div>

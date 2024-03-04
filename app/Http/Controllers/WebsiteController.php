@@ -21,6 +21,52 @@ class WebsiteController extends Controller
         return view('website.blog.index', compact('blogs'));
     }
 
+    public function showBlog($id)
+    {
+        $blogPost = Blog::find($id);
+
+        return view('website.blog.single', ['blogPost' => $blogPost]);
+    }
+
+    public function indexlandingPage()
+    {
+       
+
+        // Tampilkan halaman blog
+        return view('website.landingpage.index');
+    }
+
+    public function indexAktivitas()
+    {
+       
+
+        // Tampilkan halaman blog
+        return view('website.aktivitas.index');
+    }
+
+    public function indexKelas()
+    {
+       
+
+        // Tampilkan halaman blog
+        return view('website.kelas.index');
+    }
+
+    public function indexTestimoni()
+    {
+       
+
+        // Tampilkan halaman blog
+        return view('website.testimoni.index');
+    }
+    public function indexAboutUs()
+    {
+       
+
+        // Tampilkan halaman blog
+        return view('website.aboutus.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

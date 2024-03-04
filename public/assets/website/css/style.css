@@ -1892,6 +1892,10 @@ font header .navbar-default .navbar-nav li a:hover {
 .post.post-single .post-thumb {
   margin-top: 30px;
 }
+.post.post-single .post-thumb img {
+  max-width: 100%; /* Make the image responsive */
+  height: auto;   /* Maintain aspect ratio */
+}
 
 .post-sub-heading {
   border-bottom: 1px solid #dedede;
@@ -2250,6 +2254,27 @@ font header .navbar-default .navbar-nav li a:hover {
 .post .post-content {
   margin-top: 20px;
 }
+
+.post-content {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333; /* Adjust the color as needed */
+}
+
+.post-content a {
+  color: #0066cc; /* Link color */
+  font-weight: bold;
+}
+
+.post-content a:hover {
+  text-decoration: underline;
+}
+
+.post-content p {
+  margin-bottom: 15px;
+}
+
+
 
 .post .post-content p {
   line-height: 26px;

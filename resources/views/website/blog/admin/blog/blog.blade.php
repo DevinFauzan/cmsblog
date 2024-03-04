@@ -3,11 +3,6 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
-            <div class="page-header">
-                <h3 class="page-title">
-                    Blog
-                </h3>
-            </div>
             <div class="row">
                 <div class="col-12 grid-margin">
                     <div class="card">
@@ -21,8 +16,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <div>
-                                <table id="blogTable" class="table table-striped" style="width: 100%">
+                            <div class="">
+                                <table id="blogTable" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>Foto atau Video</th>
@@ -50,7 +45,41 @@
         <script>
             $(document).ready(function() {
                 // Initialize DataTable
-                var table = $('#blogTable').DataTable();
+                var table = $('#blogTable').DataTable({
+                    columnDefs: [{
+                            width: '100px',
+                            targets: 0
+                        },
+                        {
+                            width: '300px',
+                            targets: 1
+                        },
+                        {
+                            width: '700px',
+                            targets: 2
+                        },
+                        {
+                            width: '150px',
+                            targets: 3
+                        },
+                        {
+                            width: '120px',
+                            targets: 4
+                        }
+                    ],
+                    columns: [
+                        null, // First column (Foto atau Video)
+                        null, // Second column (Judul)
+                        {
+                            render: function(data, type, row) {
+                                return data.length > 50 ? data.substr(0, 50) + '...' : data;
+                            },
+                            targets: 2
+                        }, // Third column (Deskripsi)
+                        null, // Fourth column (Di Submit oleh)
+                        null // Fifth column (Tanggal Submit)
+                    ]
+                });
 
                 // Fetch data using AJAX
                 $.ajax({

@@ -7,7 +7,7 @@
             <div class="row py-5">
                 <div class="col-lg-12 mx-auto">
                     <div class="section-title text-center">
-                        <h2>Fun Facts About Us</h2>
+                        <h2>Aktivitas</h2>
                         <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, <br>
                             there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
                             Semantics</p>
