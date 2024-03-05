@@ -33,50 +33,74 @@ Route::get('/', function () {
 //Admin Web Miracle
 
 
-// Blog Routes
-Route::get('/blog', [AdminController::class, 'showBlog'])->name('blog');
-Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
-Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
-Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
+// Admin Routes
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Blog Routes
+    Route::get('/blog', [AdminController::class, 'showBlog'])->name('blog');
+    Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
+    Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
+    Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
 
+    // Landing Page Routes
+    Route::get('/landing_page', [AdminController::class, 'showLandingPage'])->name('landing_page');
+    Route::get('/form_landing_page', [AdminController::class, 'showLandingPageForm'])->name('form_landing_page');
 
-// Landing Page Routes
-Route::get('/landing_page', [AdminController::class, 'showLandingPage'])->name('landing_page');
-Route::get('/form_landing_page', [AdminController::class, 'showLandingPageForm'])->name('form_landing_page');
+    // Aktivitas Routes
+    Route::get('/aktivitas', [AdminController::class, 'showAktivitas'])->name('aktivitas');
+    Route::get('/form_aktivitas', [AdminController::class, 'showAktivitasForm'])->name('form_aktivitas');
 
-// Aktivitas Routes
-Route::get('/aktivitas', [AdminController::class, 'showAktivitas'])->name('aktivitas');
-Route::get('/form_aktivitas', [AdminController::class, 'showAktivitasForm'])->name('form_aktivitas');
+    // Kelas Routes
+    Route::get('/kelas', [AdminController::class, 'showKelas'])->name('kelas');
+    Route::get('/form_kelas', [AdminController::class, 'showKelasForm'])->name('form_kelas');
 
-// Kelas Routes
-Route::get('/kelas', [AdminController::class, 'showKelas'])->name('kelas');
-Route::get('/form_kelas', [AdminController::class, 'showKelasForm'])->name('form_kelas');
+    // Testimoni Routes
+    Route::get('/testimoni', [AdminController::class, 'showTestimoni'])->name('testimoni');
+    Route::get('/form_testimoni', [AdminController::class, 'showTestimoniForm'])->name('form_testimoni');
 
-// Testimoni Routes
-Route::get('/testimoni', [AdminController::class, 'showTestimoni'])->name('testimoni');
-Route::get('/form_testimoni', [AdminController::class, 'showTestimoniForm'])->name('form_testimoni');
+    // About Us Routes
+    Route::get('/about_us', [AdminController::class, 'showAboutUs'])->name('about_us');
+    Route::get('/form_about_us', [AdminController::class, 'showAboutUsForm'])->name('form_about_us');
 
-// About Us Routes
-Route::get('/about_us', [AdminController::class, 'showAboutUs'])->name('about_us');
-Route::get('/form_about_us', [AdminController::class, 'showAboutUsForm'])->name('form_about_us');
+    // Pendaftaran Route
+    Route::get('/pendaftaran', [AdminController::class, 'showPendaftaran'])->name('pendaftaran');
 
-// Pendaftaran Route
-Route::get('/pendaftaran', [AdminController::class, 'showPendaftaran'])->name('pendaftaran');
+    // rms Route
+    Route::get('/role_management', [AdminController::class, 'showRolemanagement'])->name('showRolemanagement');
+    Route::get('/role_management_edit', [AdminController::class, 'editrms'])->name('editrms');
+    Route::get('/role_management/fetch', [AdminController::class, 'fetchRoleManagementData'])->name('roleManagementData.fetch');
+    Route::get('/role_management_detail/{id}', [AdminController::class, 'showRoleManagementDetail'])->name('showRoleManagementDetail');
+    Route::post('/role_management/submit', [AdminController::class, 'submitRole'])->name('role.submit');
 
-// rms Route
-Route::get('/role_management', [AdminController::class, 'showRolemanagement'])->name('showRolemanagement');
-Route::get('/role_management_edit', [AdminController::class, 'editrms'])->name('editrms');
-Route::get('/role_management/fetch', [AdminController::class, 'fetchRoleManagementData'])->name('roleManagementData.fetch');
-Route::get('/role_management_detail/{id}', [AdminController::class, 'showRoleManagementDetail'])->name('showRoleManagementDetail');
-Route::post('/role_management/submit', [AdminController::class, 'submitRole'])->name('role.submit');
+    // user Management Route
+    Route::get('/user_management', [AdminController::class, 'showUserManagement'])->name('showUserManagement');
+    Route::get('/user_management_edit', [AdminController::class, 'editUserManagement'])->name('editUserManagement');
+    Route::get('/user_management_detail/{id}', [AdminController::class, 'showUserManagementDetail'])->name('showUserManagementDetail');
+    Route::get('/user_management/fetch', [AdminController::class, 'fetchUserManagementData'])->name('userManagementData.fetch');
+    Route::put('/users/{id}/update-role', [AdminController::class, 'updateUserRole'])->name('updateUserRole');
+});
 
-// user Management Route
-Route::get('/user_management', [AdminController::class, 'showUserManagement'])->name('showUserManagement');
-Route::get('/user_management_edit', [AdminController::class, 'editUserManagement'])->name('editUserManagement');
-Route::get('/user_management_detail/{id}', [AdminController::class, 'showUserManagementDetail'])->name('showUserManagementDetail');
-Route::get('/user_management/fetch', [AdminController::class, 'fetchUserManagementData'])->name('userManagementData.fetch');
-Route::put('/users/{id}/update-role', [AdminController::class, 'updateUserRole'])
-    ->name('updateUserRole');
+// Writer Routes
+Route::middleware(['auth', 'writer'])->group(function () {
+    // Blog Routes accessible only to writer
+    Route::get('/blog', [AdminController::class, 'showBlog'])->name('blog');
+    Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
+    Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
+    Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
+});
+
+// Ordal Routes
+Route::middleware(['auth', 'ordal'])->group(function () {
+    // Blog Routes accessible only to ordal
+    Route::get('/blog', [AdminController::class, 'showBlog'])->name('blog');
+    Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
+    Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
+    Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
+
+    // About Us Routes accessible only to ordal
+    Route::get('/about_us', [AdminController::class, 'showAboutUs'])->name('about_us');
+    Route::get('/form_about_us', [AdminController::class, 'showAboutUsForm'])->name('form_about_us');
+});
+
 
 
 //WEBSITE DEPAN
@@ -84,7 +108,7 @@ Route::put('/users/{id}/update-role', [AdminController::class, 'updateUserRole']
 
 // Landing Page
 Route::get('/blog/{id}', [WebsiteController::class, 'showBLog'])
-->name('blog.showBlog');
+    ->name('blog.showBlog');
 
 
 Route::get('/website/landingpage', [WebsiteController::class, 'indexlandingPage'])->name('website.landingpage');
@@ -96,9 +120,9 @@ Route::get('/website/aboutus', [WebsiteController::class, 'indexAboutUs'])->name
 
 
 
-        
 
-       
+
+
 
 
 

@@ -232,18 +232,23 @@
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
                         </a>
                     </li>
+                    @if(auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('landing_page') }}">
                             <span class="menu-title">Landing Page</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </a>
-                    </li>                   
+                    </li>   
+                    @endif    
+                    @if(auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('aktivitas') }}">
                             <span class="menu-title">Aktivitas</span>
                             <i class="mdi mdi-video menu-icon"></i>
                         </a>
                     </li>
+                    @endif    
+                    @if(auth()->user()->role == 'admin')                            
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('kelas') }}">
                             <span class="menu-title">Kelas</span>
@@ -251,42 +256,55 @@
 
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('testimoni') }}">
                             <span class="menu-title">Testimoni</span>
                             <i class="mdi mdi-message-video menu-icon"></i>
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('pendaftaran') }}">
                             <span class="menu-title">Pendaftaran</span>
                             <i class="mdi mdi-pen menu-icon"></i>
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->role == 'admin' || auth()->user()->role == 'ordal' || auth()->user()->role == 'writer')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('blog') }}">
                             <span class="menu-title">Blog</span>
                             <i class="mdi mdi-image-multiple menu-icon"></i>
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->role == 'admin' || auth()->user()->role == 'ordal')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about_us') }}">
                             <span class="menu-title">About Us</span>
                             <i class="mdi mdi-information-variant menu-icon"></i>
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('showRolemanagement') }}">
                             <span class="menu-title">Role Management</span>
                             <i class="mdi mdi-information-variant menu-icon"></i>
                         </a>
                     </li>
+                    @endif
+                    @if(auth()->user()->role == 'admin')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('showUserManagement') }}">
                             <span class="menu-title">User Management</span>
                             <i class="mdi mdi-information-variant menu-icon"></i>
                         </a>
                     </li>
+                    @endif
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="pages/forms/basic_elements.html">
                             <span class="menu-title">Forms</span>

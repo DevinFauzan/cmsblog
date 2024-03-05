@@ -1891,11 +1891,19 @@ font header .navbar-default .navbar-nav li a:hover {
 
 .post.post-single .post-thumb {
   margin-top: 30px;
+  position: relative;
+  overflow: hidden;
 }
+
 .post.post-single .post-thumb img {
-  max-width: 100%; /* Make the image responsive */
-  height: auto;   /* Maintain aspect ratio */
+  width: 100%;
+  height: 25%;
+  object-fit: cover;
+  object-position: center; /* Center the image within the container */
 }
+
+
+
 
 .post-sub-heading {
   border-bottom: 1px solid #dedede;
