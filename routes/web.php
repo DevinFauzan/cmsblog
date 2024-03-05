@@ -67,18 +67,19 @@ Route::get('/pendaftaran', [AdminController::class, 'showPendaftaran'])->name('p
 Route::get('/role_management', [AdminController::class, 'showRolemanagement'])->name('showRolemanagement');
 Route::get('/role_management_edit', [AdminController::class, 'editrms'])->name('editrms');
 Route::get('/role_management/fetch', [AdminController::class, 'fetchRoleManagementData'])->name('roleManagementData.fetch');
-Route::get('/user/detail/{id}', [AdminController::class, 'showDetail']);
+Route::get('/role_management_detail/{id}', [AdminController::class, 'showRoleManagementDetail'])->name('showRoleManagementDetail');
+Route::post('/role_management/submit', [AdminController::class, 'submitRole'])->name('role.submit');
 
-
+// user Management Route
 Route::get('/user_management', [AdminController::class, 'showUserManagement'])->name('showUserManagement');
 Route::get('/user_management_edit', [AdminController::class, 'editUserManagement'])->name('editUserManagement');
+Route::get('/user_management_detail/{id}', [AdminController::class, 'showUserManagementDetail'])->name('showUserManagementDetail');
 Route::get('/user_management/fetch', [AdminController::class, 'fetchUserManagementData'])->name('userManagementData.fetch');
-
-
+Route::put('/users/{id}/update-role', [AdminController::class, 'updateUserRole'])
+    ->name('updateUserRole');
 
 
 //WEBSITE DEPAN
-
 
 
 // Landing Page

@@ -5,11 +5,11 @@
         <div class="content-wrapper">
             <div class="page-header">
                 <h3 class="page-title">
+                    <a href="/user_management" class="page-title-icon bg-gradient-primary text-white me-2">
+                        <i class="mdi mdi-arrow-left"></i>
+                    </a>
                     User Management
-                </h3>
-                <a href="/role_management" class="page-title-icon bg-gradient-primary text-white me-2">
-                    <i class="mdi mdi-arrow-left"></i>
-                </a>
+                </h3>                
                 <nav aria-label="breadcrumb">
                 </nav>
             </div>

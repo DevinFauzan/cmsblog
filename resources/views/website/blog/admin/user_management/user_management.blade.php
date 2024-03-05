@@ -30,6 +30,18 @@
                                             <th> Button </th>
                                         </tr>
                                     </thead>
+                                    @foreach ($users as $u)
+                                        <tr>
+                                            <td>{{ $u->name }}</td>
+                                            <td>{{ $u->role }}</td>
+                                            <td>
+                                                <a href="{{ route('showUserManagementDetail', ['id' => $u->id]) }}"
+                                                    class="btn btn-info bg-gradient-info">
+                                                    <span class="mdi mdi-details"></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
@@ -44,36 +56,7 @@
         <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
         <script>
             $(document).ready(function() {
-                var table = $('#userManagementTable').DataTable(); // Inisialisasi DataTable
-                $.ajax({
-                    url: '{{ route('userManagementData.fetch') }}',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        // Clear existing rows
-                        table.clear().draw();
-
-                        // Add fetched data to the table
-                        $.each(data, function(index, user) {
-                            table.row.add([
-                                user.name,
-                                user.role,
-                                '<button class="btn btn-info btn-sm" onclick="showDetails(\'' +
-                                user.id + '\')">Details</button>',
-                            ]).draw();
-                        });
-                    },
-                    error: function(error) {
-                        console.error('Error fetching data:', error);
-                    }
-                });
-            });
-
-            function showDetails(id) {
-                // Implement your logic to show details based on userId
-                alert('Details for User ID ' + id);
-                // atau navigasi ke halaman detail
-                // window.location.href = '/user/detail/' + userId;
-            }
+                var table = $('#userManagementTable').DataTable(); // Inisialisasi DataTable                
+            });            
         </script>
     @endsection

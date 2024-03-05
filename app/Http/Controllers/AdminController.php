@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Roles;
 use App\Models\Media;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -143,14 +144,38 @@ class AdminController extends Controller
 
     public function showRolemanagement()
     {
-        $users = User::all();
+        $users = Roles::all();
         return view('website.blog.admin.roleManagement.role_management', compact('users'));
     }
+
+    // Controller
+    public function submitRole(Request $request)
+    {
+        // Validate the form data
+        $request->validate([
+            'role' => 'required|string', // Update to 'role'
+            'akses_halaman' => 'required|array', // Update to 'pages'
+            // Add other validation rules as needed
+        ]);
+
+        // Create a new role_management instance
+        $roleManagement = Roles::create([
+            'user_id' => auth()->user()->id,
+            'role' => $request->input('role'),
+            'akses_halaman' => implode(',', $request->input('akses_halaman')),
+            // Set other fields as needed
+        ]);
+
+        // Redirect to a success page or return a response
+        return redirect()->route('showRolemanagement')->with('success', 'Role berhasil disubmit.');
+    }
+
 
     public function showUsermanagement()
     {
         $users = User::all();
-        return view('website.blog.admin.user_management.user_management', compact('users'));
+        $roles = Roles::all();
+        return view('website.blog.admin.user_management.user_management', compact('users', 'roles'));
     }
 
     public function editUserManagement()
@@ -159,12 +184,27 @@ class AdminController extends Controller
         return view('website.blog.admin.user_Management.form_user_management', compact('users'));
     }
 
-    // app/Http/Controllers/UserController.php
-    public function showDetail($id)
+    public function showUserManagementDetail($id)
     {
-        // Implement logic untuk menampilkan halaman detail berdasarkan ID
-        // ...
-        return view('users.detail', ['id' => $id]);
+        $users = User::find($id);
+        $roles = Roles::all();
+        return view('website.blog.admin.user_management.user_management_detail', compact('users', 'roles'));
+    }
+
+    public function updateUserRole(Request $request, $id)
+    {
+        $request->validate([
+            'role' => 'required|exists:roles,role',
+            // Add other validation rules as needed
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update([
+            'role' => $request->input('role'),
+            // Update other fields as needed
+        ]);
+
+        return redirect()->route('showUserManagement')->with('success', 'User role updated successfully.');
     }
 
 
@@ -180,5 +220,11 @@ class AdminController extends Controller
         // Fetch all blogs, you may need to adjust this based on your requirements
         $users = User::select(['name', 'role'])->get();
         return response()->json($users);
+    }
+
+    public function showRoleManagementDetail($id)
+    {
+        $users = User::find($id);
+        return view('website.blog.admin.roleManagement.role_management_detail', compact('users'));
     }
 }

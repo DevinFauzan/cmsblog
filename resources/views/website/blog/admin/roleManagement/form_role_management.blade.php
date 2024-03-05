@@ -17,7 +17,7 @@
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <form class="forms-sample" id="submitRms" action="{{ route('blog.submit') }}" method="post"
+                            <form class="forms-sample" id="submitRole" action="{{ route('role.submit') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
@@ -30,46 +30,46 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="landingPage"
-                                                    name="pages[]" value="landingPage">
+                                                <input class="form-check-input" type="checkbox" 
+                                                    name="akses_halaman[]" value="landingPage">
                                                 <label class="form-check-label" for="landingPage">Landing Page</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="aktivitas"
-                                                    name="pages[]" value="aktivitas">
+                                                <input class="form-check-input" type="checkbox"
+                                                    name="akses_halaman[]" value="aktivitas">
                                                 <label class="form-check-label" for="aktivitas">Aktivitas</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="pendaftaran"
-                                                    name="pages[]" value="pendaftaran">
+                                                <input class="form-check-input" type="checkbox" 
+                                                    name="akses_halaman[]" value="pendaftaran">
                                                 <label class="form-check-label" for="pendaftaran">Pendaftaran</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="blog"
-                                                    name="pages[]" value="blog">
+                                                <input class="form-check-input" type="checkbox" 
+                                                    name="akses_halaman[]" value="blog">
                                                 <label class="form-check-label" for="blog">Blog</label>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="kelas"
-                                                    name="pages[]" value="kelas">
+                                                <input class="form-check-input" type="checkbox" 
+                                                    name="akses_halaman[]" value="kelas">
                                                 <label class="form-check-label" for="kelas">Kelas</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="testimoni"
-                                                    name="pages[]" value="testimoni">
+                                                <input class="form-check-input" type="checkbox" 
+                                                    name="akses_halaman[]" value="testimoni">
                                                 <label class="form-check-label" for="testimoni">Testimoni</label>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="aboutUs"
-                                                        name="pages[]" value="aboutUs">
+                                                    <input class="form-check-input" type="checkbox" 
+                                                        name="akses_halaman[]" value="aboutUs">
                                                     <label class="form-check-label" for="aboutUs">About Us</label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="rms"
-                                                        name="pages[]" value="rms">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="akses_halaman[]" value="rms">
                                                     <label class="form-check-label" for="rms ">Role Management </label>
                                                 </div>
                                             </div>
