@@ -70,6 +70,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/role_management/fetch', [AdminController::class, 'fetchRoleManagementData'])->name('roleManagementData.fetch');
     Route::get('/role_management_detail/{id}', [AdminController::class, 'showRoleManagementDetail'])->name('showRoleManagementDetail');
     Route::post('/role_management/submit', [AdminController::class, 'submitRole'])->name('role.submit');
+    Route::put('/users/{id}/update-role-akses', [AdminController::class, 'updateRoleAkses'])->name('updateRoleAkses');
 
     // user Management Route
     Route::get('/user_management', [AdminController::class, 'showUserManagement'])->name('showUserManagement');

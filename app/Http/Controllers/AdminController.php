@@ -144,8 +144,8 @@ class AdminController extends Controller
 
     public function showRolemanagement()
     {
-        $users = Roles::all();
-        return view('website.blog.admin.roleManagement.role_management', compact('users'));
+        $roles = Roles::all();
+        return view('website.blog.admin.roleManagement.role_management', compact('roles'));
     }
 
     // Controller
@@ -170,6 +170,23 @@ class AdminController extends Controller
         return redirect()->route('showRolemanagement')->with('success', 'Role berhasil disubmit.');
     }
 
+    public function updateRoleAkses(Request $request, $id)
+    {
+        $request->validate([
+            'akses_halaman' => 'required|array', // Add any other validation rules
+        ]);
+
+        // Find the role by ID
+        $role = Roles::findOrFail($id);
+
+        // Update the akses_halaman field with the selected checkboxes
+        $role->update([
+            'akses_halaman' => implode(',', $request->input('akses_halaman')),
+            // Add other fields as needed
+        ]);
+
+        return redirect()->route('showRolemanagement')->with('success', 'Role akses updated successfully.');
+    }
 
     public function showUsermanagement()
     {
@@ -224,7 +241,7 @@ class AdminController extends Controller
 
     public function showRoleManagementDetail($id)
     {
-        $users = User::find($id);
-        return view('website.blog.admin.roleManagement.role_management_detail', compact('users'));
+        $role = Roles::find($id);
+        return view('website.blog.admin.roleManagement.role_management_detail', compact('role'));
     }
 }

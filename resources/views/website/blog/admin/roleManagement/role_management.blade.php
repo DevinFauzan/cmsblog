@@ -3,10 +3,7 @@
 @section('content')
     <div class="main-panel">
         <div class="content-wrapper">
-            <div class="page-header">
-                <h3 class="page-title">
-                    Role Management Page
-                </h3>
+            <div class="page-header">                
             </div>
             <div class="row">
                 <div class="col-12 grid-margin">
@@ -30,7 +27,7 @@
                                             <th> Button </th>
                                         </tr>
                                     </thead>
-                                    @foreach ($users as $u)
+                                    @foreach ($roles as $u)
                                         <tr>
                                             <td>{{ $u->role }}</td>
                                             <td>{{ $u->akses_halaman }}</td>
