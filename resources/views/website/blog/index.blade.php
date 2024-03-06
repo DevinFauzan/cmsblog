@@ -1,5 +1,5 @@
 @extends('layouts.welcome')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> --}}
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
@@ -113,26 +113,53 @@
         text-transform: uppercase;
     }
 
-    .pagination {
+    .paginationBlog {
         display: flex;
         justify-content: center;
-        margin-top: 20px;
+        margin-top: 200px;
+        /* display: none; */
     }
 
-    .pagination .page-item {
+    .paginationBlog svg {
+        display: none;
+    }
+
+    .paginationBlog {
         margin: 0 5px;
+        display: flex;
+        align-items: center;
     }
 
-    .pagination .page-link {
-        color: #007bff;
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-    }
-
-    .pagination .page-link:hover {
+    .paginationBlog {
+        padding: 10px 15px;
+        border-radius: 5px;
         color: #fff;
+        background-color: #0d6efd;
+        border: 1px solid #0d6efd;
+        transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .paginationBlog {
         background-color: #007bff;
-        border: 1px solid #007bff;
+        border-color: #007bff;
+        color: #fff;
+    }
+
+    .paginationBlog {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+    }
+
+    .paginationBlog {
+        background-color: #f8f9fa;
+        border-color: #f8f9fa;
+        color: #6c757d;
+    }
+
+    .paginationBlog {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
     }
 </style>
 
@@ -174,7 +201,7 @@
                         <!-- ... Rest of your cards ... -->
                     </div>
                 </div>
-                <div class="pagination">
+                <div class="paginationBlog">
                     {{ $blogs->links() }}
                 </div>
             </div>
