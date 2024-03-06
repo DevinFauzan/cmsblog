@@ -4,7 +4,8 @@
 <style>
     @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
-<<<<<<< HEAD
+    <<<<<<< HEAD
+
     /* Add max-height to the card-content */
     .card-content {
         max-height: 100px;
@@ -19,9 +20,7 @@
         text-overflow: ellipsis;
     }
 
-=======
->>>>>>> 5e58498a1e54d07f3a642302432a4ea00728f04e
-    body {
+    =======>>>>>>>5e58498a1e54d07f3a642302432a4ea00728f04e body {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         height: 100%;
@@ -150,29 +149,33 @@
                                 Semantics</p>
                         </div>
                         @foreach ($blogs as $b)
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="card">
-                                <a class="img-card" href="#">
-                                    <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
-                                </a>
-                                <div class="card-content">
-                                    <h4 class="card-title">
-                                        <a href="#"> {{ $b->judul }}</a>
-                                    </h4>
-                                    <p class="limited-text">
-                                        {{ $b->deskripsi }}
-                                    </p>
-                                </div>
-                                <div class="card-read-more">
-                                    <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}" class="btn btn-link btn-block">
-                                        Read More
+                            <div class="col-xs-12 col-sm-4">
+                                <div class="card">
+                                    <a class="img-card" href="#">
+                                        <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
                                     </a>
+                                    <div class="card-content">
+                                        <h4 class="card-title">
+                                            <a href="#"> {{ $b->judul }}</a>
+                                        </h4>
+                                        <p class="limited-text">
+                                            {{ $b->deskripsi }}
+                                        </p>
+                                    </div>
+                                    <div class="card-read-more">
+                                        <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}"
+                                            class="btn btn-link btn-block">
+                                            Read More
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                         <!-- ... Rest of your cards ... -->
                     </div>
+                </div>
+                <div class="pagination">
+                    {{ $blogs->links() }}
                 </div>
             </div>
         </div>
