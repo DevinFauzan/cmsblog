@@ -25,11 +25,26 @@
                                             <th>Deskripsi</th>
                                             <th>Di Submit oleh</th>
                                             <th>Tanggal Submit</th>
+                                            <th>Edit</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="blogTableBody">
-                                        <!-- Table body content will be loaded dynamically -->
-                                    </tbody>
+                                    @foreach ($blogs as $blog)
+                                        <tr>
+                                            <td>
+                                                <img src="/storage/{{ $blog->media_nama }}" alt="Media" width="50">
+                                            </td>
+                                            <td>{{ $blog->judul }}</td>
+                                            <td>{{ strlen($blog->deskripsi) > 50 ? substr($blog->deskripsi, 0, 50) . '...' : $blog->deskripsi }}
+                                            </td>
+                                            <td>{{ $blog->user ? $blog->user->name : 'N/A' }}</td>
+                                            <td>{{ $blog->created_at }}</td>
+                                            <td>
+                                                <a href="{{ route('blog.edit', $blog->id) }}"
+                                                    class="btn btn-warning">Edit</a>
+                                                
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
@@ -39,8 +54,9 @@
         </div>
     @endsection
 
+
     @section('scripts')
-        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        {{-- <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
         <script>
             $(document).ready(function() {
@@ -77,36 +93,17 @@
                             targets: 2
                         }, // Third column (Deskripsi)
                         null, // Fourth column (Di Submit oleh)
+                        null,
                         null // Fifth column (Tanggal Submit)
                     ]
                 });
-
-                // Fetch data using AJAX
-                $.ajax({
-                    url: '{{ route('blog.fetch') }}',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        // Clear existing rows
-                        table.clear().draw();
-
-                        // Add fetched data to the table
-                        $.each(data, function(index, blog) {
-                            table.row.add([
-                                '<img src="/storage/' + blog.media_nama +
-                                '" alt="Media" width="50">',
-                                blog.judul,
-                                blog.deskripsi,
-                                blog.user ? blog.user.name :
-                                'N/A', // Access the user's name through the relationship
-                                blog.created_at,
-                            ]).draw();
-                        });
-                    },
-                    error: function(error) {
-                        console.error('Error fetching data:', error);
-                    }
-                });
+            });
+        </script> --}}
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var table = $('#blogTable').DataTable(); // Inisialisasi DataTable                
             });
         </script>
     @endsection

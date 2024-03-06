@@ -40,6 +40,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
     Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
     Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
+    Route::get('/blog/edit/{id}', [AdminController::class, 'showEditBlogForm'])->name('blog.edit');
+    Route::post('/blog/edit/{id}', [AdminController::class, 'submitEditBlog'])->name('blog.edit.submit');
 
     // Landing Page Routes
     Route::get('/landing_page', [AdminController::class, 'showLandingPage'])->name('landing_page');

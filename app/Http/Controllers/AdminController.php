@@ -8,6 +8,7 @@ use App\Models\Roles;
 use App\Models\Media;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -73,6 +74,66 @@ class AdminController extends Controller
         // Fetch all blogs, you may need to adjust this based on your requirements
         $blogs = Blog::with('user')->get();
         return response()->json($blogs);
+    }
+
+    public function showBlogDetail($id)
+    {
+        $blog = Blog::find($id);
+        return view('website.blog.admin.blog.blog_detail', compact('blog'));
+    }
+
+    public function showEditBlogForm($id)
+    {
+        $blog = Blog::find($id);
+        // Add any other necessary data to pass to the view
+        return view('website.blog.admin.blog.blog_detail', compact('blog'));
+    }
+
+    public function submitEditBlog(Request $request, $id)
+    {
+        $blog = Blog::find($id);
+
+        // Validate the form data
+        $request->validate([
+            'media_nama' => 'nullable|mimes:jpeg,png,jpg,gif,mp4,avi,wmv|max:10240',
+            'deskripsi'  => 'required',
+            'judul'      => 'required',
+            'created_at' => 'required|date',
+        ]);
+
+        // Update the existing blog data
+        $blog->deskripsi = $request->input('deskripsi');
+        $blog->judul = $request->input('judul');
+        $blog->created_at = $request->input('created_at');
+
+        // Update media if a new file is provided
+        if ($request->hasFile('media_nama')) {
+            $request->validate([
+                'media_nama' => 'mimes:jpeg,png,jpg,gif,mp4,avi,wmv|max:10240',
+            ]);
+
+            // Delete the old media file
+            Storage::disk('public')->delete($blog->media_nama);
+
+            // Store the new media file
+            $mediaPath = $request->file('media_nama')->storeAs('media', $request->file('media_nama')->getClientOriginalName(), 'public');
+
+            // Update media data
+            $media = Media::create([
+                'media_id'   => 'MD' . str_pad(Media::count() + 1, 4, '0', STR_PAD_LEFT),
+                'media_nama' => $mediaPath,
+                'created_at' => now(),
+            ]);
+
+            $blog->media_id = $media->id;
+            $blog->media_nama = $media->media_nama;
+        }
+
+        // Save the changes
+        $blog->save();
+
+        // Redirect or send a response as needed
+        return redirect()->route('blog')->with('success', 'Blog successfully updated.');
     }
 
     // Landing Page Section
