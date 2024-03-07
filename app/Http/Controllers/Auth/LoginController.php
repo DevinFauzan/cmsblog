@@ -39,12 +39,9 @@ class LoginController extends Controller
                 break;
             case 'writer':
                 return '/blog';
-                break;
-            case 'ordal':
-                return '/blog'; // or any default page for ordal
-                break;
+                break;            
             default:
-                return '/home';
+                return '/website/blog';
         }
     }
 

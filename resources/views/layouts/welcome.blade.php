@@ -9,7 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="description" content="Aviato E-Commerce Template">
     <meta name="author" content="Themefisher.com">
-    <title>Airspace | Creative Agency Bootstrap template</title>
+    <title>YCMII</title>
 
     <!-- Mobile Specific Meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -79,7 +79,7 @@
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.landingpage' ? 'active' : '' }}">
+                                    {{-- <li class="nav-item {{ Route::currentRouteName() === 'website.landingpage' ? 'active' : '' }}">
                                         <a class="nav-link" href="{{ route('website.landingpage') }}">Home</a>
                                     </li>
                                     <li class="nav-item {{ Route::currentRouteName() === 'website.aktivitas' ? 'active' : '' }}">
@@ -90,13 +90,13 @@
                                     </li>
                                     <li class="nav-item {{ Route::currentRouteName() === 'website.testimoni' ? 'active' : '' }}">
                                         <a class="nav-link" href="{{ route('website.testimoni') }}">testimoni</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item {{ Route::currentRouteName() === 'website.blog' ? 'active' : '' }}">
                                         <a class="nav-link" href="{{ route('website.blog') }}">Blog</a>
                                     </li>
-                                    <li class="nav-item {{ Route::currentRouteName() === 'website.aboutus' ? 'active' : '' }}">
+                                    {{-- <li class="nav-item {{ Route::currentRouteName() === 'website.aboutus' ? 'active' : '' }}">
                                         <a class="nav-link" href="{{ route('website.aboutus') }}">about us</a>
-                                    </li>
+                                    </li> --}}
                                     
                                 </ul>
                             </div>

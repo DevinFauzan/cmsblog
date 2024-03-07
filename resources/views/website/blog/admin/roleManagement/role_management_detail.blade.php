@@ -32,46 +32,51 @@
                                         <div class="col">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                    value="landingPage" {{ in_array('landingPage', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    value="Landing Page" {{ in_array('Landing Page', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="landingPage">Landing Page</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                    value="aktivitas" {{ in_array('aktivitas', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    value="Aktivitas" {{ in_array('Aktivitas', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="aktivitas">Aktivitas</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                    value="pendaftaran" {{ in_array('pendaftaran', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    value="Pendaftaran" {{ in_array('Pendaftaran', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="pendaftaran">Pendaftaran</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                    value="blog" {{ in_array('blog', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    value="Blog" {{ in_array('Blog', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="blog">Blog</label>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                    value="kelas" {{ in_array('kelas', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    value="Kelas" {{ in_array('Kelas', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="kelas">Kelas</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                    value="testimoni" {{ in_array('testimoni', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    value="Testimoni" {{ in_array('Testimoni', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="testimoni">Testimoni</label>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                        value="aboutUs" {{ in_array('aboutUs', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                        value="About Us" {{ in_array('About Us', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="aboutUs">About Us</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" name="akses_halaman[]"
-                                                        value="rms" {{ in_array('rms', explode(',', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                        value="Role Management" {{ in_array('Role Management', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="rms ">Role Management </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="akses_halaman[]"
+                                                        value="User Management" {{ in_array('User Management', explode(', ', $role->akses_halaman)) ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="um ">User Management </label>
                                                 </div>
                                             </div>
                                         </div>

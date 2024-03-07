@@ -47,3 +47,17 @@
                     </div>
                 </div>
             @endsection
+            {{-- @section('scripts')
+                <script src="https://cdn.ckeditor.com/ckeditor5/49.6.0/classic/ckeditor.js"></script>
+                <script>
+                    ClassicEditor
+                        .create(document.querySelector('#exampleTextarea1'), {
+                            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
+                                'undo', 'redo'
+                            ]
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                </script>
+            @endsection --}}

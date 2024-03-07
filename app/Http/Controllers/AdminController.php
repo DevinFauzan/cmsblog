@@ -223,7 +223,7 @@ class AdminController extends Controller
         $roleManagement = Roles::create([
             'user_id' => auth()->user()->id,
             'role' => $request->input('role'),
-            'akses_halaman' => implode(',', $request->input('akses_halaman')),
+            'akses_halaman' => implode(', ', $request->input('akses_halaman')),
             // Set other fields as needed
         ]);
 
@@ -242,7 +242,7 @@ class AdminController extends Controller
 
         // Update the akses_halaman field with the selected checkboxes
         $role->update([
-            'akses_halaman' => implode(',', $request->input('akses_halaman')),
+            'akses_halaman' => implode(', ', $request->input('akses_halaman')),
             // Add other fields as needed
         ]);
 

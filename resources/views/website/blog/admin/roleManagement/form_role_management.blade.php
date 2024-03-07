@@ -31,46 +31,51 @@
                                         <div class="col">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" 
-                                                    name="akses_halaman[]" value="landingPage">
+                                                    name="akses_halaman[]" value="Landing Page">
                                                 <label class="form-check-label" for="landingPage">Landing Page</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox"
-                                                    name="akses_halaman[]" value="aktivitas">
+                                                    name="akses_halaman[]" value="Aktivitas">
                                                 <label class="form-check-label" for="aktivitas">Aktivitas</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" 
-                                                    name="akses_halaman[]" value="pendaftaran">
+                                                    name="akses_halaman[]" value="Pendaftaran">
                                                 <label class="form-check-label" for="pendaftaran">Pendaftaran</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" 
-                                                    name="akses_halaman[]" value="blog">
+                                                    name="akses_halaman[]" value="Blog">
                                                 <label class="form-check-label" for="blog">Blog</label>
                                             </div>
                                         </div>
                                         <div class="col">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" 
-                                                    name="akses_halaman[]" value="kelas">
+                                                    name="akses_halaman[]" value="Kelas">
                                                 <label class="form-check-label" for="kelas">Kelas</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" 
-                                                    name="akses_halaman[]" value="testimoni">
+                                                    name="akses_halaman[]" value="Testimoni">
                                                 <label class="form-check-label" for="testimoni">Testimoni</label>
                                             </div>
                                             <div class="col">
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" 
-                                                        name="akses_halaman[]" value="aboutUs">
+                                                        name="akses_halaman[]" value="About Us">
                                                     <label class="form-check-label" for="aboutUs">About Us</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox"
-                                                        name="akses_halaman[]" value="rms">
+                                                        name="akses_halaman[]" value="Role Management">
                                                     <label class="form-check-label" for="rms ">Role Management </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        name="akses_halaman[]" value="User Management">
+                                                    <label class="form-check-label" for="um ">User Management </label>
                                                 </div>
                                             </div>
                                         </div>

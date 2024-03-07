@@ -16,6 +16,7 @@
                                     </a>
                                 </div>
                             </div>
+                            <h4 class="card-title mb-0">Video Table</h4>
                             <div class="table-responsive">
                                 <table id="landingPageVideoTable" class="table table-striped" style="width: 100%">
                                     <thead>
@@ -28,6 +29,7 @@
                                     </thead>
                                 </table>
                             </div>
+                            <h4 class="card-title mb-0">Tagline Table</h4>
                             <div class="table-responsive">
                                 <table id="landingPageTaglineTable" class="table table-striped" style="width: 100%">
                                     <thead>

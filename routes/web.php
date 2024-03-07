@@ -89,6 +89,9 @@ Route::middleware(['auth', 'writer'])->group(function () {
     Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
     Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
     Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
+    Route::get('/blog/edit/{id}', [AdminController::class, 'showEditBlogForm'])->name('blog.edit');
+    Route::post('/blog/edit/{id}', [AdminController::class, 'submitEditBlog'])->name('blog.edit.submit');
+
 });
 
 // Ordal Routes
@@ -98,6 +101,9 @@ Route::middleware(['auth', 'ordal'])->group(function () {
     Route::get('/form_blog', [AdminController::class, 'showBlogForm'])->name('form_blog');
     Route::post('/blog/submit', [AdminController::class, 'submitNewBlog'])->name('blog.submit');
     Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
+    Route::get('/blog/edit/{id}', [AdminController::class, 'showEditBlogForm'])->name('blog.edit');
+    Route::post('/blog/edit/{id}', [AdminController::class, 'submitEditBlog'])->name('blog.edit.submit');
+
 
     // About Us Routes accessible only to ordal
     Route::get('/about_us', [AdminController::class, 'showAboutUs'])->name('about_us');

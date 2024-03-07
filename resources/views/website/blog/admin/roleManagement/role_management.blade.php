@@ -30,7 +30,7 @@
                                     @foreach ($roles as $u)
                                         <tr>
                                             <td>{{ $u->role }}</td>
-                                            <td>{{ $u->akses_halaman }}</td>
+                                            <td>{{ $u->akses_halaman }} </td>
                                             <td>
                                                 <a href="{{ route('showRoleManagementDetail', ['id' => $u->id]) }}"
                                                     class="btn btn-info bg-gradient-info">
