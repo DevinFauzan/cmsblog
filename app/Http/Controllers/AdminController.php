@@ -65,9 +65,8 @@ class AdminController extends Controller
         ]);
 
         // Redirect atau kirim respons sesuai kebutuhan
-        return redirect()->route('blog')->with('success', 'Blog berhasil disubmit.');
+        return redirect()->route('form_blog')->with('success', 'Blog submitted successfully!');
     }
-
 
     public function fetchBlogData()
     {
@@ -133,8 +132,33 @@ class AdminController extends Controller
         $blog->save();
 
         // Redirect or send a response as needed
-        return redirect()->route('blog')->with('success', 'Blog successfully updated.');
+        // return redirect()->route('blog')->with('success', 'Blog successfully updated.');
+        return redirect()->back()->with('success', 'Blog updated successfully!');
     }
+
+
+    public function deleteBlog($id)
+    {
+        $blog = Blog::find($id);
+
+        if ($blog) {
+            // Retrieve the related media record
+            $media = Media::find($blog->media_id);
+
+            // Delete the blog record
+            $blog->delete();
+
+            // Delete the related media record
+            if ($media) {
+                $media->delete();
+            }
+
+            return redirect()->route('blog')->with('success', 'Blog berhasil dihapus');
+        } else {
+            return redirect()->route('blog')->with('error', 'Blog tidak ditemukan');
+        }
+    }
+
 
     // Landing Page Section
     public function showLandingPage()

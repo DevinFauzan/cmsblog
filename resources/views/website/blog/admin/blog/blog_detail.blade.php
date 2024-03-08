@@ -23,7 +23,7 @@
                                 @csrf
                                 @method('POST') <!-- Add this line for Laravel to recognize the form method as POST -->
                                 @if ($blog->media_nama)
-                                    <div class="form-group">                                        
+                                    <div class="form-group">
                                         <img src="{{ asset('storage/' . $blog->media_nama) }}" alt="Current Media"
                                             width="100">
                                     </div>
@@ -60,3 +60,17 @@
             </div>
         </div>
     @endsection
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    icon: 'success'
+                }).then(function() {
+                    window.location.href = '{{ route('blog') }}';
+                });
+            });
+        </script>
+    @endif

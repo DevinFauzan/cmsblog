@@ -47,17 +47,17 @@
                     </div>
                 </div>
             @endsection
-            {{-- @section('scripts')
-                <script src="https://cdn.ckeditor.com/ckeditor5/49.6.0/classic/ckeditor.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            @if (session('success'))
                 <script>
-                    ClassicEditor
-                        .create(document.querySelector('#exampleTextarea1'), {
-                            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
-                                'undo', 'redo'
-                            ]
-                        })
-                        .catch(error => {
-                            console.error(error);
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: '{{ session('success') }}',
+                            icon: 'success'
+                        }).then(function() {
+                            window.location.href = '{{ route('blog') }}';
                         });
+                    });
                 </script>
-            @endsection --}}
+            @endif
