@@ -50,13 +50,23 @@
                                     <label for="exampleTextarea1">Deskripsi</label>
                                     <textarea class="form-control" id="deskripsi" name="deskripsi">{{ old('deskripsi', $blog->deskripsi) }}</textarea>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="exampleInputName1">Tanggal Submit</label>
                                     <input type="date" class="form-control" id="exampleInputName1" name="created_at"
                                         placeholder="date" required
                                         value="{{ old('created_at', $blog->created_at->format('Y-m-d')) }}" readonly>
                                 </div>
+                                @if (auth()->user()->role == 'admin')
+                                    <div class="form-group">
+                                        <label for="is_publish">Status Publish</label>
+                                        <select class="form-control" id="is_publish" name="is_publish" required>
+                                            <option value="1" {{ $blog->is_publish == 1 ? 'selected' : '' }}>Publish
+                                            </option>
+                                            <option value="0" {{ $blog->is_publish == 0 ? 'selected' : '' }}>Gagal
+                                            </option>
+                                        </select>
+                                    </div>
+                                @endif
                                 <div>
                                     <button type="submit" class="btn btn-primary">Submit Changes</button>
                                 </div>

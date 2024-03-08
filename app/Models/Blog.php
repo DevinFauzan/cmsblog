@@ -9,10 +9,15 @@ class Blog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['judul', 'deskripsi', 'media_id', 'media_nama','user_id'];
+    protected $fillable = ['judul', 'deskripsi', 'media_id', 'media_nama', 'user_id', 'is_publish'];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getStatusPublishText()
+    {
+        return $this->is_publish ? 'Iya' : 'Tidak';
     }
 }

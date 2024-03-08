@@ -15,10 +15,10 @@ class WebsiteController extends Controller
      */
     public function indexBlog()
     {
-        $blogs = Blog::paginate(3); // Adjust the number per page as needed
-        // $blogs = Blog::all();
+        $blogs = Blog::orderBy('is_publish', 'desc')->paginate(3); // Order by is_publish in descending order
         return view('website.blog.index', compact('blogs'));
     }
+
 
     public function showBlog($id)
     {
@@ -29,7 +29,7 @@ class WebsiteController extends Controller
 
     public function indexlandingPage()
     {
-       
+
 
         // Tampilkan halaman blog
         return view('website.landingpage.index');
@@ -37,7 +37,7 @@ class WebsiteController extends Controller
 
     public function indexAktivitas()
     {
-       
+
 
         // Tampilkan halaman blog
         return view('website.aktivitas.index');
@@ -45,7 +45,7 @@ class WebsiteController extends Controller
 
     public function indexKelas()
     {
-       
+
 
         // Tampilkan halaman blog
         return view('website.kelas.index');
@@ -53,14 +53,14 @@ class WebsiteController extends Controller
 
     public function indexTestimoni()
     {
-       
+
 
         // Tampilkan halaman blog
         return view('website.testimoni.index');
     }
     public function indexAboutUs()
     {
-       
+
 
         // Tampilkan halaman blog
         return view('website.aboutus.index');
