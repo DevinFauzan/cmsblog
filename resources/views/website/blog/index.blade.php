@@ -137,20 +137,14 @@
         padding: 10px 15px;
         border-radius: 5px;
         color: #fff;
-        background-color: #0d6efd;
-        border: 1px solid #0d6efd;
+        /* background-color: #0d6efd;
+        border: 1px solid #0d6efd; */
         transition: background-color 0.3s, border-color 0.3s, color 0.3s;
     }
 
     .paginationBlog {
-        background-color: #007bff;
-        border-color: #007bff;
-        color: #fff;
-    }
-
-    .paginationBlog {
-        background-color: #007bff;
-        border-color: #007bff;
+        /* background-color: #007bff;
+        border-color: #007bff; */
         color: #fff;
     }
 
@@ -162,7 +156,18 @@
 
     .paginationBlog {
         outline: none;
-        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        /* box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25); */
+    }
+
+    .paginationBlog {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff; /* Adjust the background color as needed */
+        z-index: 1000; /* Ensure the pagination is on top of other elements */
+        padding: 10px; /* Add some padding for better visibility */
+        border-top: 1px solid #ccc; /* Add a border at the top for separation */
     }
 </style>
 
@@ -178,35 +183,45 @@
                                 there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
                                 Semantics</p>
                         </div>
-                        @foreach ($blogs as $b)
-                            <div class="col-xs-12 col-sm-4">
-                                <div class="card">
-                                    <a class="img-card" href="#">
-                                        <img src="{{ asset('storage/' . $b->media_nama) }}" alt="{{ $b->judul }}" />
-                                    </a>
-                                    <div class="card-content">
-                                        <h4 class="card-title">
-                                            <a href="#"> {{ $b->judul }}</a>
-                                        </h4>
-                                        <p class="limited-text">
-                                            {!! $b->deskripsi !!}
-                                        </p>
+                        @if (
+                            $blogs->isEmpty() ||
+                                $blogs->every(function ($blog) {
+                                    return !$blog->is_publish;
+                                }))
+                            <h1>Belum Ada Data</h1>
+                        @else
+                            @foreach ($blogs as $b)
+                                @if ($b->is_publish)
+                                    <div class="col-xs-12 col-sm-4">
+                                        <div class="card">
+                                            <a class="img-card" href="#">
+                                                <img src="{{ asset('storage/' . $b->media_nama) }}"
+                                                    alt="{{ $b->judul }}" />
+                                            </a>
+                                            <div class="card-content">
+                                                <h4 class="card-title">
+                                                    <a href="#"> {{ $b->judul }}</a>
+                                                </h4>
+                                                <p class="limited-text">
+                                                    {!! $b->deskripsi !!}
+                                                </p>
+                                            </div>
+                                            <div class="card-read-more">
+                                                <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}"
+                                                    class="btn btn-link btn-block">
+                                                    Read More
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="card-read-more">
-                                        <a href="{{ route('blog.showBlog', ['id' => $b->id]) }}"
-                                            class="btn btn-link btn-block">
-                                            Read More
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <!-- ... Rest of your cards ... -->
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-                <div class="paginationBlog">
-                    {{ $blogs->links() }}
-                </div>
+                    <div class="paginationBlog">
+                        {{ $blogs->links() }}
+                    </div>
             </div>
         </div>
     </section>

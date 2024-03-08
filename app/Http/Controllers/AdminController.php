@@ -46,13 +46,15 @@ class AdminController extends Controller
         // $mediaPath = $request->file('media_nama')->store('media', 'public');
         $mediaPath = $request->file('media_nama')->storeAs('media', $request->file('media_nama')->getClientOriginalName(), 'public');
 
-
         // Simpan data ke tabel Media
         $media = Media::create([
             'media_id'   => $mediaId,
             'media_nama' => $mediaPath,
             'created_at' => now(),
         ]);
+
+        // Set is_publish to "gagal" or false
+        $isPublish = false;
 
         // Create a new blog using the Blog model
         $blog = Blog::create([
@@ -62,11 +64,13 @@ class AdminController extends Controller
             'media_id'    => $media->id,
             'media_nama'  => $media->media_nama,
             'user_id'     => auth()->user()->id,
+            'is_publish'  => $isPublish,
         ]);
 
         // Redirect atau kirim respons sesuai kebutuhan
         return redirect()->route('form_blog')->with('success', 'Blog submitted successfully!');
     }
+
 
     public function fetchBlogData()
     {
@@ -98,6 +102,7 @@ class AdminController extends Controller
             'deskripsi'  => 'required',
             'judul'      => 'required',
             'created_at' => 'required|date',
+            'is_publish' => 'nullable|boolean', // Add validation for is_publish
         ]);
 
         // Update the existing blog data
@@ -117,16 +122,21 @@ class AdminController extends Controller
             // Store the new media file
             $uploadedFile = $request->file('media_nama');
             $mediaPath = $uploadedFile->storeAs('media', $uploadedFile->getClientOriginalName(), 'public');
-            
+
             // Update media data
             $media = Media::create([
                 'media_id'   => 'MD' . str_pad(Media::count() + 1, 4, '0', STR_PAD_LEFT),
                 'media_nama' => $mediaPath,
                 'created_at' => now(),
             ]);
-            
+
             $blog->media_id = $media->id;
             $blog->media_nama = asset('storage/' . $mediaPath); // Use asset() to generate the URL
+        }
+
+        // Update is_publish if provided in the form
+        if ($request->has('is_publish')) {
+            $blog->is_publish = $request->input('is_publish');
         }
 
         // Save the changes
@@ -136,9 +146,6 @@ class AdminController extends Controller
         // return redirect()->route('blog')->with('success', 'Blog successfully updated.');
         return redirect()->back()->with('success', 'Blog updated successfully!');
     }
-
-
-
 
     public function deleteBlog($id)
     {

@@ -25,6 +25,7 @@
                                             <th>Deskripsi</th>
                                             <th>Di Submit oleh</th>
                                             <th>Tanggal Submit</th>
+                                            <th>Publish</th>
                                             <th>Button</th>
                                         </tr>
                                     </thead>
@@ -39,6 +40,7 @@
                                             </td>
                                             <td>{{ $blog->user ? $blog->user->name : 'N/A' }}</td>
                                             <td>{{ $blog->created_at }}</td>
+                                            <td>{{ $blog->getStatusPublishText() }}</td>    
                                             <td>
                                                 <a href="{{ route('blog.edit', $blog->id) }}"
                                                     class="btn btn-warning">Edit</a>
