@@ -60,6 +60,7 @@
         display: block;
         margin-bottom: 10px;
         line-height: 1.42857143;
+        /* max-height: 300px; */
         background-color: #fff;
         border-radius: 2px;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -88,7 +89,9 @@
 
     .card-content {
         padding: 15px;
+        max-height: 100px;
         text-align: left;
+        overflow: hidden;
     }
 
     .card-title {
@@ -186,7 +189,7 @@
                                             <a href="#"> {{ $b->judul }}</a>
                                         </h4>
                                         <p class="limited-text">
-                                            {{ $b->deskripsi }}
+                                            {!! $b->deskripsi !!}
                                         </p>
                                     </div>
                                     <div class="card-read-more">

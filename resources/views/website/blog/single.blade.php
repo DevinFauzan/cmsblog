@@ -32,7 +32,7 @@
 						<img src="{{ asset('storage/' . $blogPost->media_nama) }}" alt="{{ $blogPost->judul }}" />
 					</div>
 					<div class="post-content post-excerpt">
-						{{ $blogPost->deskripsi }}
+						{!! $blogPost->deskripsi !!}
 				    </div>
 				    <div class="post-comments-form">
 				    	<h3 class="post-sub-heading">Leave You Comments</h3>

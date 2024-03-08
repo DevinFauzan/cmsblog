@@ -35,7 +35,7 @@
                                             </td>
                                             <td>{{ strlen($blog->judul) > 15 ? substr($blog->judul, 0, 15) . '...' : $blog->judul }}
                                             </td>
-                                            <td>{{ strlen($blog->deskripsi) > 50 ? substr($blog->deskripsi, 0, 50) . '...' : $blog->deskripsi }}
+                                            <td>{!! strlen($blog->deskripsi) > 50 ? substr($blog->deskripsi, 0, 30) . '...' : $blog->deskripsi !!}
                                             </td>
                                             <td>{{ $blog->user ? $blog->user->name : 'N/A' }}</td>
                                             <td>{{ $blog->created_at }}</td>

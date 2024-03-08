@@ -115,17 +115,18 @@ class AdminController extends Controller
             Storage::disk('public')->delete($blog->media_nama);
 
             // Store the new media file
-            $mediaPath = $request->file('media_nama')->storeAs('media', $request->file('media_nama')->getClientOriginalName(), 'public');
-
+            $uploadedFile = $request->file('media_nama');
+            $mediaPath = $uploadedFile->storeAs('media', $uploadedFile->getClientOriginalName(), 'public');
+            
             // Update media data
             $media = Media::create([
                 'media_id'   => 'MD' . str_pad(Media::count() + 1, 4, '0', STR_PAD_LEFT),
                 'media_nama' => $mediaPath,
                 'created_at' => now(),
             ]);
-
+            
             $blog->media_id = $media->id;
-            $blog->media_nama = $media->media_nama;
+            $blog->media_nama = asset('storage/' . $mediaPath); // Use asset() to generate the URL
         }
 
         // Save the changes
@@ -135,6 +136,8 @@ class AdminController extends Controller
         // return redirect()->route('blog')->with('success', 'Blog successfully updated.');
         return redirect()->back()->with('success', 'Blog updated successfully!');
     }
+
+
 
 
     public function deleteBlog($id)
