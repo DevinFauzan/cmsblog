@@ -62,10 +62,44 @@
                                 </div>
                             </form>
                             <script>
+                                const image_upload_handler_callback = (blobInfo, progress) => new Promise((resolve, reject) => {
+                                    const xhr = new XMLHttpRequest();
+                                    xhr.withCredentials = false;
+                                    xhr.open('POST', 'upload.php');
+
+                                    // Add the CSRF token to the request headers
+                                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                                    xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+
+                                    xhr.upload.onprogress = (e) => {
+                                        progress(e.loaded / e.total * 100);
+                                    };
+
+                                    xhr.onload = () => {
+                                        if (xhr.status === 200) {
+                                            // Log the response for debugging
+                                            console.log('Image Upload Response:', xhr.responseText);
+                                            resolve(JSON.parse(xhr.responseText).location);
+                                        } else {
+                                            console.error('Image Upload Error:', xhr.status, xhr.statusText);
+                                            reject('HTTP Error: ' + xhr.status);
+                                        }
+                                    };
+
+                                    xhr.onerror = () => {
+                                        console.error('Image Upload Failed: XHR Transport Error');
+                                        reject('Image upload failed due to a XHR Transport error.');
+                                    };
+
+                                    const formData = new FormData();
+                                    formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+                                    xhr.send(formData);
+                                });
                                 tinymce.init({
                                     selector: 'textarea',
-                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
-                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss lists',
+                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | bullist numlist outdent indent',
                                     tinycomments_mode: 'embedded',
                                     tinycomments_author: 'Author name',
                                     mergetags_list: [{
@@ -81,9 +115,10 @@
                                         "See docs to implement AI Assistant")),
 
                                     // Added image upload configuration
-                                    images_upload_url: 'public/storage/media',
+                                    images_upload_url: 'upload.php',
                                     images_upload_credentials: true,
                                     paste_data_images: true,
+                                    images_upload_handler: image_upload_handler_callback
                                 });
                             </script>
                         </div>
