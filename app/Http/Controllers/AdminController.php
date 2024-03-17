@@ -31,6 +31,7 @@ class AdminController extends Controller
 
     public function submitNewBlog(Request $request)
     {
+        $blog = Blog::all();
         // Validasi formulir, termasuk validasi file
         $request->validate([
             'media_nama' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,wmv|max:10240',
@@ -44,6 +45,7 @@ class AdminController extends Controller
 
         // Simpan file
         // $mediaPath = $request->file('media_nama')->store('media', 'public');
+
         $mediaPath = $request->file('media_nama')->storeAs('media', $request->file('media_nama')->getClientOriginalName(), 'public');
 
         // Simpan data ke tabel Media
@@ -66,9 +68,10 @@ class AdminController extends Controller
             'user_id'     => auth()->user()->id,
             'is_publish'  => $isPublish,
         ]);
+        $blog->media_nama = asset('storage/' . $mediaPath);
 
         // Redirect atau kirim respons sesuai kebutuhan
-        return redirect()->route('form_blog')->with('success', 'Blog submitted successfully!');
+        return redirect()->route('form_blog', compact('blog'))->with('success', 'Blog submitted successfully!');
     }
 
 
@@ -169,6 +172,11 @@ class AdminController extends Controller
         }
     }
 
+    public function upload(Request $request)
+    {
+        $imgpath = request()->file('file')->store('media', 'public');
+        return response()->json(['location' => "/storage/$imgpath "]);
+    }
 
     // Landing Page Section
     public function showLandingPage()

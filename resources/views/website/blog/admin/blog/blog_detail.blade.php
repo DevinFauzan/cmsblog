@@ -28,7 +28,7 @@
                             <form class="forms-sample" id="editBlog" action="{{ route('blog.edit.submit', $blog->id) }}"
                                 method="post" enctype="multipart/form-data">
                                 @csrf
-                                @method('POST') <!-- Add this line for Laravel to recognize the form method as POST -->
+                                {{-- @method('POST') <!-- Add this line for Laravel to recognize the form method as POST --> --}}
                                 @if ($blog->media_nama)
                                     <div class="form-group">
                                         <img src="{{ asset('storage/' . $blog->media_nama) }}" alt="Current Media"
@@ -107,28 +107,44 @@
                                     xhr.send(formData);
                                 });
                                 tinymce.init({
-                                    selector: 'textarea',
-                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss lists',
-                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | bullist numlist outdent indent',
-                                    tinycomments_mode: 'embedded',
-                                    tinycomments_author: 'Author name',
-                                    mergetags_list: [{
-                                            value: 'First.Name',
-                                            title: 'First Name'
-                                        },
-                                        {
-                                            value: 'Email',
-                                            title: 'Email'
-                                        },
-                                    ],
-                                    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(
-                                        "See docs to implement AI Assistant")),
-
-                                    // Added image upload configuration
-                                    images_upload_url: 'upload.php',
-                                    images_upload_credentials: true,
+                                    selector: 'textarea#deskripsi', // Replace 'yourTextareaID' with the ID of your textarea element
+                                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss lists number',
+                                    toolbar: 'undo redo | formatselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | removeformat',
+                                    menubar: false,
+                                    statusbar: false,
+                                    height: 400, // Set the height of the editor as needed
+                                    branding: false, // Hide the TinyMCE branding
                                     paste_data_images: true,
-                                    images_upload_handler: image_upload_handler_callback
+                                    content_style: 'ul { list-style-type: square; margin-left: 20px; }',
+                                    image_title: true,
+                                    automatic_uploads: true,
+                                    file_picker_types: 'image',
+                                    images_upload_url: '/upload', // Replace 'upload.php' with your image upload endpoint
+                                    images_upload_credentials: true,
+                                    file_picker_callback: function(callback, value, meta) {
+                                        var input = document.createElement('input');
+                                        input.setAttribute('type', 'file');
+                                        input.setAttribute('accept', 'image/*');
+
+                                        input.onchange = function() {
+                                            var file = this.files[0];
+                                            var reader = new FileReader();
+                                            reader.onload = function() {
+                                                var id = 'blobid' + (new Date()).getTime();
+                                                var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                                                var base64 = reader.result.split(',')[1];
+                                                var blobInfo = blobCache.create(id, file, base64);
+                                                blobCache.add(blobInfo);
+                                                // Tambahkan tanda '/' di awal path file
+                                                var filePath = blobInfo.blobUri().replace('blob:', '/');
+                                                callback(filePath, {
+                                                    title: file.name
+                                                });
+                                            };
+                                            reader.readAsDataURL(file);
+                                        };
+                                        input.click();
+                                    }
                                 });
                             </script>
                         </div>

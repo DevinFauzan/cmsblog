@@ -160,7 +160,7 @@
     }
 
     .paginationBlog {
-        position: relative;
+        position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
@@ -203,7 +203,7 @@
                                                     <a href="#"> {{ $b->judul }}</a>
                                                 </h4>
                                                 <p class="limited-text">
-                                                    {!! $b->deskripsi !!}
+                                                    <td>{!! isset($b->deskripsi) ? htmlspecialchars_decode($b->deskripsi) : '' !!}</td>
                                                 </p>
                                             </div>
                                             <div class="card-read-more">

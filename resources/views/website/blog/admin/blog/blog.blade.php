@@ -25,7 +25,7 @@
                                             <th>Deskripsi</th>
                                             <th>Di Submit oleh</th>
                                             <th>Tanggal Submit</th>
-                                            <th>Publish</th>
+                                            <th>Publikasi</th>
                                             <th>Button</th>
                                         </tr>
                                     </thead>
@@ -36,11 +36,16 @@
                                             </td>
                                             <td>{{ strlen($blog->judul) > 15 ? substr($blog->judul, 0, 15) . '...' : $blog->judul }}
                                             </td>
-                                            <td>{!! strlen($blog->deskripsi) > 50 ? substr($blog->deskripsi, 0, 30) . '...' : $blog->deskripsi !!}
+                                            <td>
+                                                @if(isset($blog->deskripsi) && strlen($blog->deskripsi) > 30)
+                                                    {!! substr(html_entity_decode(strip_tags($blog->deskripsi)), 0, 30) !!}...
+                                                @else
+                                                    {!! html_entity_decode($blog->deskripsi) !!}
+                                                @endif
                                             </td>
                                             <td>{{ $blog->user ? $blog->user->name : 'N/A' }}</td>
                                             <td>{{ $blog->created_at }}</td>
-                                            <td>{{ $blog->getStatusPublishText() }}</td>    
+                                            <td>{{ $blog->getStatusPublishText() }}</td>
                                             <td>
                                                 <a href="{{ route('blog.edit', $blog->id) }}"
                                                     class="btn btn-warning">Edit</a>

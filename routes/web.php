@@ -43,6 +43,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/blog/edit/{id}', [AdminController::class, 'showEditBlogForm'])->name('blog.edit');
     Route::post('/blog/edit/{id}', [AdminController::class, 'submitEditBlog'])->name('blog.edit.submit');
     Route::delete('/blog/delete/{id}', [AdminController::class, 'deleteBlog'])->name('blog.delete');
+    Route::post('/upload', [AdminController::class, 'upload']);
 
 
     // Landing Page Routes
@@ -93,6 +94,7 @@ Route::middleware(['auth', 'writer'])->group(function () {
     Route::get('/blog/fetch', [AdminController::class, 'fetchBlogData'])->name('blog.fetch');
     Route::get('/blog/edit/{id}', [AdminController::class, 'showEditBlogForm'])->name('blog.edit');
     Route::post('/blog/edit/{id}', [AdminController::class, 'submitEditBlog'])->name('blog.edit.submit');
+    Route::post('/upload', [AdminController::class, 'upload']);
 });
 
 // Ordal Routes

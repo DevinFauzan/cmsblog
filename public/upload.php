@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
 $accepted_origins = array("http://localhost");
 
 // Set the upload folder
-$imageFolder = "/storage/media";
+$imageFolder = "/media";
 
 if (isset($_SERVER['HTTP_ORIGIN'])) {
     // same-origin requests won't set an origin. If the origin is set, it must be valid.
